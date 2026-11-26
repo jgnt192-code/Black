@@ -6,7 +6,11 @@ RUN apt-get update && \
         ca-certificates \
         curl \
         git \
-        openssh-client && \
+        openssh-client \
+        python3 \
+        make \
+        g++ \
+        build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
