@@ -1,0 +1,32 @@
+databases:
+  - name: black-mahura-db
+    plan: free
+    databaseName: malvin
+    user: mxd
+
+services:
+  - type: web
+    name: black-mahura
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: SESSION_ID
+        sync: false
+      - key: MODE
+        value: public
+      - key: TIME_ZONE
+        value: Africa/Harare
+      - key: AUTO_LIKE_STATUS
+        value: "true"
+      - key: AUTO_READ_STATUS
+        value: "true"
+        - key: MALVIN_API_KEY
+        vaue: "your api key here"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: black-mahura-db
+          property: connectionString
+      
